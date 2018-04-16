@@ -1,4 +1,7 @@
 package:
+  ca-certificates:
+    installed: true
+
 command:
   cloudflared --version | head -1:
     exit-status: 0

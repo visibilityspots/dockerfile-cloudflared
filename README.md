@@ -13,17 +13,19 @@ a docker container which runs the [cloudflared](https://developers.cloudflare.co
 I wrote some tests in a goss.yaml file which can be executed by [dgoss](https://github.com/aelsabbahy/goss/tree/master/extras/dgoss)
 
 ```
+$ dgoss run --name cloudflared --rm -ti visibilityspots/cloudflared:latest
 INFO: Starting docker container
-INFO: Container ID: 7874bf4c
+INFO: Container ID: e5bd35d3
 INFO: Sleeping for 0.2
 INFO: Running Tests
 Process: cloudflared: running: matches expectation: [true]
+Package: ca-certificates: installed: matches expectation: [true]
 Command: cloudflared --version | head -1: exit-status: matches expectation: [0]
 Command: cloudflared --version | head -1: stdout: matches expectation: [cloudflared version DEV (built unknown)]
 
 
-Total Duration: 0.015s
-Count: 3, Failed: 0, Skipped: 0
+Total Duration: 0.028s
+Count: 4, Failed: 0, Skipped: 0
 INFO: Deleting container
 ```
 
