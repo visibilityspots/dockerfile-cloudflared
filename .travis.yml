@@ -1,0 +1,14 @@
+sudo: required
+services:
+- docker
+before_install:
+- curl -L https://goss.rocks/install | sudo sh
+- docker build -t visibilityspots/cloudflared .
+script:
+- dgoss run --name cloudflared -ti visibilityspots/cloudflared
+after_success:
+- if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u=visibilityspots -p="$DOCKER_PASSWORD";
+  docker push visibilityspots/cloudflared; fi
+env:
+  global:
+    secure: G6rfAWVv+bzqA9GLzHTQxQhNdVVdjMDbAqRAwZS16naS3SaE0t4ie5lzCBI7flYDLaWHiqLWVLoAxvdSPx9+YBwP1VFdvo87uSAGJVmpExsznn13V6Zeih77qkAylFPWtTnuGWjtaMPipP1mHnkJ0tEnPqalrNAlL6W7nPfP4qdme+EYC20WInk/xlTiVPy49+KpWx5hO9qhXdWrEAjRET6RhPpMpWrcOrdS6JYbEXR0mlC9GxvV6sVugRXwoTF0O8WB8d89Bxswa3E0mHE+QwDBf3b0Q+yesn/2ve+RZhBfSm2lGCIfjkEVn3A2Ci2EO87jw+flDh0xS5HZHRi7zbNNQNINSrP2KfKthHPfvnCzb3VOBFTPBPiZJQEIfzZggFQo26IjFmyl3EvvXGDmXlB/ClZISYHdOFIs8us+S4Wxlts3MhE5McUOha4rul+86pfbcFpHgvLYAV+XJWZKB28nwbBEB3HbUIr3ro8hU7SLaiVNtAjfP5O8LuyqK36jSlafFo0sxzXYKWxx94DNOxN2a1ZPqqGAMmbvqbDEKR1hQK4vHRpYvsZa2LHCHvD1OODAcviPxv+xNyChdabwiMA1a1v0VwzmY1b4sk93/Ml2QrBMXsUsPeccIad12CrIDQ9mYACnszjOlKslStpcXDe+yKAocwmBiQBozLuzyio=

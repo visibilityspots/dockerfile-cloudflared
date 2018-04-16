@@ -1,0 +1,9 @@
+package:
+command:
+  cloudflared --version | head -1:
+    exit-status: 0
+    stdout:
+    - cloudflared version DEV (built unknown)
+process:
+  cloudflared:
+    running: true
