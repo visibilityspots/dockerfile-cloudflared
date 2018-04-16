@@ -4,7 +4,6 @@ RUN apk update; \
 	apk add git;\ 
 	go get -v github.com/cloudflare/cloudflared/cmd/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared
-
 RUN go build ./
 
 FROM alpine
