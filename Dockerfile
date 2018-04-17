@@ -1,17 +1,20 @@
+ARG ARCH
 FROM golang:alpine as gobuild
+
+ARG GOARCH
+ARG GOARM
 
 RUN apk update; \
 	apk add git;\ 
 	go get -v github.com/cloudflare/cloudflared/cmd/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared
-RUN go build ./
+RUN GOARCH=${GOARCH} GOARM=${GOARM} go build ./
 
-FROM alpine
+FROM multiarch/alpine:${ARCH}-edge
 
 LABEL maintainer="Jan Collijs"
 
-RUN apk update; \
-	apk add --no-cache ca-certificates; \
+RUN apk add --no-cache ca-certificates; \
         rm -rf /var/cache/apk/*;
 
 COPY --from=gobuild /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared/cloudflared /usr/local/bin/cloudflared
