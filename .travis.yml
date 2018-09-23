@@ -10,6 +10,7 @@ env:
   matrix:
     - ARCH=amd64 GOARCH=amd64 GOARM=6 QQEMU_ARCH=x86_64 TAG=amd64
     - ARCH=armhf GOARCH=arm   GOARM=6 QEMU_ARCH=arm     TAG=arm
+    - ARCH=arm64 GOARCH=arm64 GOARM=6 QEMU_ARCH=arm64   TAG=arm64
 
 before_install:
   - curl -L https://goss.rocks/install | sudo sh
