@@ -5,9 +5,11 @@ ARG GOARCH
 ARG GOARM
 
 RUN apk update; \
-	apk add git;\ 
-	go get -v github.com/cloudflare/cloudflared/cmd/cloudflared
+    apk add git gcc build-base; \
+    go get -v github.com/cloudflare/cloudflared/cmd/cloudflared
+
 WORKDIR /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared
+
 RUN GOARCH=${GOARCH} GOARM=${GOARM} go build ./
 
 FROM multiarch/alpine:${ARCH}-edge
