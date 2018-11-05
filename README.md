@@ -8,6 +8,10 @@ a docker container which runs the [cloudflared](https://developers.cloudflare.co
 
 ```docker run --name cloudflared --rm --net host visibilityspots/cloudflared```
 
+### custom upstream DNS
+
+```docker run --name cloudflared --rm --net host -e DNS1=#.#.#.# -e DNS2=#.#.#.# visibilityspots/cloudflared```
+
 ## test
 
 I wrote some tests in a goss.yaml file which can be executed by [dgoss](https://github.com/aelsabbahy/goss/tree/master/extras/dgoss)
