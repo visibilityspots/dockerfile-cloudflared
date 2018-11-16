@@ -1,7 +1,7 @@
 # Cloudflared
 
 [![Build Status](https://travis-ci.org/visibilityspots/dockerfile-cloudflared.svg?branch=master)](https://travis-ci.org/visibilityspots/dockerfile-cloudflared)
-[![Anchore Image Overview](https://anchore.io/service/badges/image/83a10eecc520e2b85fc8861ca106ae3ef6e8e7509010f8509e2a0131750dd450)](https://anchore.io/image/dockerhub/visibilityspots%2Fcloudflared%3Alatest)
+[![Anchore Image Policy](https://anchore.io/service/badges/policy/5bb668c1c87128bd7db88fdfcafc05f0110cbede5c2999538d5af413d03c1c0e?registry=dockerhub&repository=visibilityspots/cloudflared&tag=arm)](https://anchore.io)
 [![](https://images.microbadger.com/badges/image/visibilityspots/cloudflared:amd64.svg)](https://microbadger.com/images/visibilityspots/cloudflared:amd64)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Docker Pulls](https://img.shields.io/docker/pulls/visibilityspots/cloudflared.svg)](https://hub.docker.com/r/visibilityspots/cloudflared/)
