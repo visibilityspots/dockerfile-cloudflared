@@ -2,24 +2,21 @@ sudo: required
 language: bash
 services:
 - docker
-
 env:
   global:
-    secure: Or5wtPms5rI3oMEGSuzcbA5bYB6yTCnKslihKsjFyldkVBrEz0htBDUZto78HxWblMjHypR1YRCxhoToFKI1a0Q5HvnD7gbrDgJDxZmXN0LpHxS3hubMYfYc6V/DALYY29u2Foq4aoBsBMKC22fwBODFkzwtaIY/KRYxP2LDQHfBYZBMxd6eBIu8jG5UhuCVgU2gz7/0XaIouoHCBNqacf8dgv+635IjyEZATGhuAJ6TOFtaXwyf588xc5jFCoKlo2c3cCu9dHtzAsrG9kk5mgFmZkxpQkuQVTb8n8I6bekuaW0Si6xFSLRRZcbEo8aUPF6PmHT42RcXj/R56HlyYJxX32+ZVSTaftrQ0330KPIzSG8WFDvt0rCa0PUKJvWd1UcB+8ZRCVCxZse1p0IlaeYDZu9D0EvyZowY1nemFuFTU52g2tWYtLoQVGJ43fATBUNxunulg0/i55ZzHDFlE4XS1P2Scsoqp42UVbdCieotT7rhNJwL1jdxgEJfh958wpFVnoC5RTl6w5tuFe/cM+X7TsDT6EuyrMr0hMgW5cLfJ3Q4meYA0LE2GSyELxNRWGUdwCA4h4tyeCigdRHXb1UXnh969O0ehI4N3ADy9ssO2TkvyfkajCVh+6hPXC8OFPO/uPyjc1zCpaGVvtJS2hMOdyJ9obm8JiskeCGP8t8=
-
+    secure: ElqxMj9A1qDWfCWL8PGvSqd0i5fG3ltS+GV1B3trY9JKiqYxaWYIYMS9WDme5M9lnRoDnRI7APOqFW/1Aow5A+v9sQuZksV19GER/vO4qICOYAHmvQmcwpZc8wub38MXdtyLcPIcdqZxYp28mZ0z2HgRL2nAvN2BaGExLWynLvkTwE5unSnkX1Yw34n0E2Jp+oVtk/r8CnWqe9iy5XhXFdXfRSYzVAXPFk8hlJOHUZyVDC1gLpxlju0QHD4r4J0xZ8M0utYkR+2HkSaCxtiEi8E/IeZUFblfjbaphbUghxx9fMvgiLlUDC1iP0F6AlY1wguyy3H6RHDLddaR4OB6EwC4Qr3D7Tow2dhcc4hKcs3WtaeKLn2N3V4eTElsyV7G9L2Vv6DDq4rIMunpuhmNJC3v5QUHrjT7jfZSuS2Eti+zkkWokB+1j01G76C/3h/k0ZSJjus/pxPV6BTV3xUeBn3+47Q/R3Uim10WckIh84bJEscnshC9Tmc/JPooWGjlasgWZllnPw0j4xk7d5vM6KKYkHDZ/4wWu/XtzG8g7FevGFn3KeAiBKmK2oKVDIhMwG+R/AXvOYWWM0GMPL92BiwA+VsFGQn7dqetvLCCM5+c9CSkwbru7fo3C/KTbCrTsSC6Oe4o9ARuiUeFH+cyPpLqT1q8GYYV+81mN8gqVRY=
   matrix:
-    - ARCH=amd64 GOARCH=amd64 GOARM=6 QQEMU_ARCH=x86_64 TAG=amd64
-    - ARCH=armhf GOARCH=arm   GOARM=6 QEMU_ARCH=arm     TAG=arm
-    - ARCH=arm64 GOARCH=arm64 GOARM=6 QEMU_ARCH=arm64   TAG=arm64
-
+  - ARCH=amd64 GOARCH=amd64 GOARM=6 QQEMU_ARCH=x86_64 TAG=amd64
+  - ARCH=armhf GOARCH=arm   GOARM=6 QEMU_ARCH=arm     TAG=arm
+  - ARCH=arm64 GOARCH=arm64 GOARM=6 QEMU_ARCH=arm64   TAG=arm64
 before_install:
-  - curl -L https://goss.rocks/install | sudo sh
-  - sudo apt-get -y install qemu-user-static
-  - docker run --rm --privileged multiarch/qemu-user-static:register
-
+- curl -L https://goss.rocks/install | sudo sh
+- sudo apt-get -y install qemu-user-static
+- docker run --rm --privileged multiarch/qemu-user-static:register
 script:
-  - docker build -t visibilityspots/cloudflared:$TAG --build-arg ARCH="$ARCH" --build-arg GOARCH="$GOARCH" --build-arg GOARM="$GOARM" ./
-  - dgoss run --name cloudflared -ti visibilityspots/cloudflared:$TAG
-
+- docker build -t visibilityspots/cloudflared:$TAG --build-arg ARCH="$ARCH" --build-arg
+  GOARCH="$GOARCH" --build-arg GOARM="$GOARM" ./
+- dgoss run --name cloudflared -ti visibilityspots/cloudflared:$TAG
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u=visibilityspots -p="$DOCKER_PASSWORD"; docker push visibilityspots/cloudflared:$TAG; fi
+- if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u=visibilityspots -p="$DOCKER_PASSWORD";
+  docker push visibilityspots/cloudflared:$TAG; fi
