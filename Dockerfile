@@ -19,9 +19,11 @@ LABEL maintainer="Jan Collijs"
 ENV DNS1 1.1.1.1
 ENV DNS2 1.0.0.1
 
-RUN adduser -S cloudflared; \
-        apk add --no-cache ca-certificates bind-tools; \
-        rm -rf /var/cache/apk/*;
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' > /etc/apk/repositories ; \
+    echo 'http://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories; \
+    adduser -S cloudflared; \
+    apk add --no-cache ca-certificates bind-tools; \
+    rm -rf /var/cache/apk/*;
 
 COPY --from=gobuild /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared/cloudflared /usr/local/bin/cloudflared
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD nslookup -po=5054 cloudflare.com 127.0.0.1 || exit 1
