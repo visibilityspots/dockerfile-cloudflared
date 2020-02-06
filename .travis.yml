@@ -20,3 +20,11 @@ script:
 after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u=visibilityspots -p="$DOCKER_PASSWORD";
   docker push visibilityspots/cloudflared:$TAG; fi
+- docker pull visibilityspots/cloudflared:arm
+- docker pull visibilityspots/cloudflared:arm64
+- docker pull visibilityspots/cloudflared:amd64
+- docker manifest create --amend visibilityspots/cloudflared:latest visibilityspots/cloudflared:arm visibilityspots/cloudflared:arm64 visibilityspots/cloudflared:amd64
+- docker manifest annotate visibilityspots/cloudflared:latest visibilityspots/cloudflared:arm --os linux --arch arm
+- docker manifest annotate visibilityspots/cloudflared:latest visibilityspots/cloudflared:arm64 --os linux --arch arm64
+- docker manifest annotate visibilityspots/cloudflared:latest visibilityspots/cloudflared:amd64 --os linux --arch amd64
+- docker manifest push --purge visibilityspots/cloudflared:latest
