@@ -25,10 +25,13 @@ ENV PORT 5054
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' > /etc/apk/repositories ; \
     echo 'http://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories; \
     adduser -S cloudflared; \
-    apk add --no-cache ca-certificates bind-tools; \
+    apk add --no-cache ca-certificates bind-tools libcap; \
     rm -rf /var/cache/apk/*;
 
 COPY --from=gobuild /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared/cloudflared /usr/local/bin/cloudflared
+
+RUN setcap CAP_NET_BIND_SERVICE+eip /usr/local/bin/cloudflared
+
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD nslookup -po=${PORT} cloudflare.com 127.0.0.1 || exit 1
 
 USER cloudflared
