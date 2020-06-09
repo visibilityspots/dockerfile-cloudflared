@@ -3,9 +3,8 @@ package:
     installed: true
 
 command:
-  cloudflared --version | head -1:
+  uname -a:
     exit-status: 0
 
-command:
-  uname -a:
+  cloudflared --version:
     exit-status: 0
