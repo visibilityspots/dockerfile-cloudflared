@@ -11,6 +11,10 @@ a docker container which runs the [cloudflared](https://developers.cloudflare.co
 
 ```docker run --name cloudflared --rm --net host visibilityspots/cloudflared```
 
+### run with docker-compose
+
+``` docker-compose up -d```
+
 ### custom upstream DNS
 
 ```docker run --name cloudflared --rm --net host -e DNS1=#.#.#.# -e DNS2=#.#.#.# visibilityspots/cloudflared```

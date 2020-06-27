@@ -1,0 +1,15 @@
+---
+version: "2"
+
+services:
+  cloudflared:
+    image: visibilityspots/cloudflared
+    container_name: cloudflared
+    ports:
+      - "5054:5054/tcp"
+      - "5054:5054/udp"
+    environment:
+        DNS1: 1.1.1.1
+        DNS2: 1.0.0.1
+        PORT: 5054
+    restart: always
