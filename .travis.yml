@@ -25,26 +25,6 @@ stages:
 - name: push
 
 script:
-<<<<<<< HEAD
-  - docker build -t visibilityspots/cloudflared:$TAG --build-arg ARCH="$ARCH" --build-arg GOARCH="$GOARCH" --build-arg GOARM="$GOARM" ./
-  - dgoss run --name cloudflared -ti visibilityspots/cloudflared:$TAG
-  - echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
-  - docker push visibilityspots/cloudflared:$TAG
-
-jobs:
-  include:
-     - stage: push
-       script:
-       - echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
-       - docker pull visibilityspots/cloudflared:arm
-       - docker pull visibilityspots/cloudflared:arm64
-       - docker pull visibilityspots/cloudflared:amd64
-       - docker manifest create --amend visibilityspots/cloudflared:latest visibilityspots/cloudflared:arm visibilityspots/cloudflared:arm64 visibilityspots/cloudflared:amd64
-       - docker manifest annotate visibilityspots/cloudflared:latest visibilityspots/cloudflared:arm --os linux --arch arm
-       - docker manifest annotate visibilityspots/cloudflared:latest visibilityspots/cloudflared:arm64 --os linux --arch arm64
-       - docker manifest annotate visibilityspots/cloudflared:latest visibilityspots/cloudflared:amd64 --os linux --arch amd64
-       - docker manifest push --purge visibilityspots/cloudflared:latest
-=======
 - docker build -t visibilityspots/cloudflared:$TAG --build-arg ARCH="$ARCH" --build-arg
   GOARCH="$GOARCH" --build-arg GOARM="$GOARM" ./
 - dgoss run --name cloudflared -ti visibilityspots/cloudflared:$TAG
@@ -72,4 +52,3 @@ jobs:
 env:
   global:
     secure: nTT0E7Og68rCyPWKKf/J4208z5R/GHqPKXq7d5/MlikabiFJSttO0Qz1sMGu8qSAg3s1QdZrzB0gyspdIqIDTCtVYjJCxNx33+Uvmll2qd4iD0zAvlIQC1aPu2oC38c4tmyc9YZmNHeqSRiAmOPGm4LAL0weh+4hRshm+u78mkxfT7wHRBwIp7INBHoYz7D67omnztEBkvosrj39Zv1Ph/fHafNle6xUVaUGjialjjnJEfTuvmu0XDGZCm28cjudTMlWGJXcygn7dmPdT9S8LRtOPy6No2Xjo3t8B4gRsgo3pSAYcWEBZI+kst5MjVqE9qtZ47KA0jIayBTV6Gz2eKXM+iyms6TVRrT5xN8axB5f6KuwfiZm3btRj9SXtMLIJ/WhqYN+AF0qDYG1FaPGFP9BUXaTS+BkNjfAuDVsgQwx1oEJoQS+oEA89k6FU7ZmgJRq+oZPrmvrW+taRhM6NY2vCwiwRttBDWFTJTB4SdJ8qVkHbF1o1/79Wzr5bTwvI+HbbPibxfGLF2eeuSoju+7EDGV5E4ZeW/4BpUb+f6I7QpvrW/On3iiMe270z/j2uDWQlLUldS89ngCwWEIS8gIOM6ADx8YcuMSTSCLIR55CNKXxQMy4H0HDLeN3Y7/y6sRxmXv5iI0ESwYrh71g+waIFyHJUXCBuuZ72X+usoY=
->>>>>>> 0bf0a96cf80a71574c276b80e5bc9ab40f9922fa
