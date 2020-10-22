@@ -12,7 +12,7 @@ WORKDIR /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared
 
 RUN GOARCH=${GOARCH} GOARM=${GOARM} go build ./
 
-FROM multiarch/alpine:${ARCH}-edge
+FROM multiarch/alpine:${ARCH}-latest-stable
 
 LABEL maintainer="Jan Collijs"
 
@@ -23,8 +23,8 @@ ENV UPSTREAM2 https://${DNS2}/.well-known/dns-query
 ENV PORT 5054
 ENV ADDRESS 0.0.0.0
 
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' > /etc/apk/repositories ; \
-    echo 'http://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories; \
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/main' > /etc/apk/repositories ; \
+    echo 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community' >> /etc/apk/repositories; \
     adduser -S cloudflared; \
     apk add --no-cache ca-certificates bind-tools libcap; \
     rm -rf /var/cache/apk/*;
