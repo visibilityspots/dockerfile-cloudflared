@@ -31,8 +31,11 @@ a docker container which runs the [cloudflared](https://developers.cloudflare.co
 
 I wrote some tests in a goss.yaml file which can be executed by [dgoss](https://github.com/aelsabbahy/goss/tree/master/extras/dgoss)
 
+1. Select $ARCH and $GOARCH to build
+2. Build image: `docker build -t cloudflared-test --build-arg ARCH=#ARCH --build-arg GOARCH=$GOARCH --build-arg CGO_ENABLED=0 .`
+3. Run `dgoss run --name cloudflared --rm -ti cloudflared-test:latest`
+
 ```
-$ dgoss run --name cloudflared --rm -ti visibilityspots/cloudflared:latest
 INFO: Starting docker container
 INFO: Container ID: e5bd35d3
 INFO: Sleeping for 0.2
