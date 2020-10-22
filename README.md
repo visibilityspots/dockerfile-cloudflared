@@ -13,7 +13,7 @@ a docker container which runs the [cloudflared](https://developers.cloudflare.co
 
 ### run with docker-compose
 
-``` docker-compose up -d```
+```docker-compose up -d```
 
 ### custom upstream DNS
 
@@ -21,7 +21,11 @@ a docker container which runs the [cloudflared](https://developers.cloudflare.co
 
 ### custom port
 
-``` docker run --name cloudflared --rm --net host -e PORT=5053 visibilityspots/cloudflared```
+```docker run --name cloudflared --rm --net host -e PORT=5053 visibilityspots/cloudflared```
+
+### dualstack ipv4/ipv6
+
+```docker run --name cloudflared --rm --net host -e ADDRESS :: visibilityspots/cloudflared```
 
 ## test
 
@@ -45,4 +49,5 @@ INFO: Deleting container
 ```
 
 ## License
+
 Distributed under the MIT license
