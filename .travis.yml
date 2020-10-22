@@ -38,7 +38,7 @@ jobs:
   include:
      - stage: push
        script:
-       - echo "$DOCKER_PASSWORD" | docker login -u=visibilityspots --password-stdin
+       - echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
        - docker pull visibilityspots/cloudflared:arm
        - docker pull visibilityspots/cloudflared:arm64
        - docker pull visibilityspots/cloudflared:amd64
