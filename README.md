@@ -25,7 +25,7 @@ a docker container which runs the [cloudflared](https://developers.cloudflare.co
 
 ### dualstack ipv4/ipv6
 
-```docker run --name cloudflared --rm --net host -e ADDRESS :: visibilityspots/cloudflared```
+```docker run --name cloudflared --rm --net host -e ADDRESS=:: visibilityspots/cloudflared```
 
 ## test
 
