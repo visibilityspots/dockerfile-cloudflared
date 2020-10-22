@@ -12,4 +12,5 @@ services:
         DNS1: 1.1.1.1
         DNS2: 1.0.0.1
         PORT: 5054
+        ADDRESS: 0.0.0.0
     restart: always

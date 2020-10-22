@@ -31,14 +31,14 @@ stages:
 script:
   - docker build -t visibilityspots/cloudflared:$TAG --build-arg ARCH="$ARCH" --build-arg GOARCH="$GOARCH" --build-arg GOARM="$GOARM" ./
   - dgoss run --name cloudflared -ti visibilityspots/cloudflared:$TAG
-  - echo "$DOCKER_PASSWORD" | docker login -u=visibilityspots --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
   - docker push visibilityspots/cloudflared:$TAG
 
 jobs:
   include:
      - stage: push
        script:
-       - echo "$DOCKER_PASSWORD" | docker login -u=visibilityspots --password-stdin
+       - echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
        - docker pull visibilityspots/cloudflared:arm
        - docker pull visibilityspots/cloudflared:arm64
        - docker pull visibilityspots/cloudflared:amd64
