@@ -17,9 +17,9 @@ FROM multiarch/alpine:${ARCH}-latest-stable
 LABEL maintainer="Jan Collijs"
 
 ENV DNS1 1.1.1.1
-ENV UPSTREAM1 https://${DNS1}/.well-known/dns-query
+ENV UPSTREAM1 https://${DNS1}/dns-query
 ENV DNS2 1.0.0.1
-ENV UPSTREAM2 https://${DNS2}/.well-known/dns-query
+ENV UPSTREAM2 https://${DNS2}/dns-query
 ENV PORT 5054
 ENV ADDRESS 0.0.0.0
 
