@@ -22,7 +22,7 @@ ENV DNS2 1.0.0.1
 ENV UPSTREAM2 https://${DNS2}/dns-query
 ENV PORT 5054
 ENV ADDRESS 0.0.0.0
-ENV METRICS 127.0.0.1
+ENV METRICS 127.0.0.1:8080
 
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/main' > /etc/apk/repositories ; \
     echo 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community' >> /etc/apk/repositories; \
