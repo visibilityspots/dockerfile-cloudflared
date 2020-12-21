@@ -1,18 +1,13 @@
-ARG ARCH
 FROM golang:alpine as gobuild
 
-ARG GOARCH
-ARG GOARM
-
-RUN apk update; \
-    apk add git gcc build-base; \
+RUN apk add --no-cache git gcc build-base; \
     go get -v github.com/cloudflare/cloudflared/cmd/cloudflared
 
 WORKDIR /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared
 
-RUN GOARCH=${GOARCH} GOARM=${GOARM} go build ./
+RUN go build ./
 
-FROM multiarch/alpine:${ARCH}-latest-stable
+FROM alpine
 
 LABEL maintainer="Jan Collijs"
 
@@ -24,9 +19,7 @@ ENV PORT 5054
 ENV ADDRESS 0.0.0.0
 ENV METRICS 127.0.0.1:8080
 
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/main' > /etc/apk/repositories ; \
-    echo 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community' >> /etc/apk/repositories; \
-    adduser -S cloudflared; \
+RUN adduser -S cloudflared; \
     apk add --no-cache ca-certificates bind-tools libcap; \
     rm -rf /var/cache/apk/*;
 
