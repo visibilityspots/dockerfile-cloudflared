@@ -15,39 +15,20 @@ addons:
   - ARCH=arm64 GOARCH=arm64 GOARM=6 QEMU_ARCH=arm64   TAG=arm64
 
 before_install:
-- mkdir ~/.docker && echo '{ "experimental":"enabled" }' > ~/.docker/config.json
+- mkdir -p ~/.docker/cli-plugins
+- echo '{ "experimental":"enabled" }' > ~/.docker/config.json
+- curl -L -o ~/.docker/cli-plugins/docker-buildx https://github.com/docker/buildx/releases/download/v0.5.1/buildx-v0.5.1.linux-amd64
+- chmod +x ~/.docker/cli-plugins/docker-buildx
 - curl -L https://goss.rocks/install | sudo sh
-- sudo apt-get -y install qemu-user-static
-- docker run --rm --privileged multiarch/qemu-user-static:register
-
-stages:
-- name: test
-- name: push
 
 script:
+- docker version
+- docker buildx version
 - docker build -t visibilityspots/cloudflared:$TAG --build-arg ARCH="$ARCH" --build-arg
   GOARCH="$GOARCH" --build-arg GOARM="$GOARM" ./
 - dgoss run --name cloudflared -ti visibilityspots/cloudflared:$TAG
 - echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
-- docker push visibilityspots/cloudflared:$TAG
-
-jobs:
-  include:
-  - stage: push
-    script:
-    - echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
-    - docker pull visibilityspots/cloudflared:arm
-    - docker pull visibilityspots/cloudflared:arm64
-    - docker pull visibilityspots/cloudflared:amd64
-    - docker manifest create --amend visibilityspots/cloudflared:latest visibilityspots/cloudflared:arm
-      visibilityspots/cloudflared:arm64 visibilityspots/cloudflared:amd64
-    - docker manifest annotate visibilityspots/cloudflared:latest visibilityspots/cloudflared:arm
-      --os linux --arch arm
-    - docker manifest annotate visibilityspots/cloudflared:latest visibilityspots/cloudflared:arm64
-      --os linux --arch arm64
-    - docker manifest annotate visibilityspots/cloudflared:latest visibilityspots/cloudflared:amd64
-      --os linux --arch amd64
-    - docker manifest push --purge visibilityspots/cloudflared:latest
+#- docker push visibilityspots/cloudflared:$TAG
 
 env:
   global:
