@@ -14,10 +14,10 @@ before_install:
 - echo '{ "experimental":"enabled" }' > ~/.docker/config.json
 - curl -L -o ~/.docker/cli-plugins/docker-buildx https://github.com/docker/buildx/releases/download/v0.5.1/buildx-v0.5.1.linux-amd64
 - chmod +x ~/.docker/cli-plugins/docker-buildx
-- docker buildx create --use
 - echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
 
 script:
+#- docker buildx create --use
 - docker buildx build --platform linux/amd64,linux/arm,linux/arm64 --tag visibilityspots/cloudflared:latest . --push
 
 env:
