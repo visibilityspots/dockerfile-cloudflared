@@ -9,26 +9,16 @@ addons:
     packages:
     - docker-ce
 
-  matrix:
-  - ARCH=amd64 GOARCH=amd64 GOARM=6 QQEMU_ARCH=x86_64 TAG=amd64
-  - ARCH=armhf GOARCH=arm   GOARM=6 QEMU_ARCH=arm     TAG=arm
-  - ARCH=arm64 GOARCH=arm64 GOARM=6 QEMU_ARCH=arm64   TAG=arm64
-
 before_install:
 - mkdir -p ~/.docker/cli-plugins
 - echo '{ "experimental":"enabled" }' > ~/.docker/config.json
 - curl -L -o ~/.docker/cli-plugins/docker-buildx https://github.com/docker/buildx/releases/download/v0.5.1/buildx-v0.5.1.linux-amd64
 - chmod +x ~/.docker/cli-plugins/docker-buildx
-- curl -L https://goss.rocks/install | sudo sh
+- docker buildx create --use
+- echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
 
 script:
-- docker version
-- docker buildx version
-- docker build -t visibilityspots/cloudflared:$TAG --build-arg ARCH="$ARCH" --build-arg
-  GOARCH="$GOARCH" --build-arg GOARM="$GOARM" ./
-- dgoss run --name cloudflared -ti visibilityspots/cloudflared:$TAG
-- echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
-#- docker push visibilityspots/cloudflared:$TAG
+- docker buildx build --platform linux/amd64,linux/arm,linux/arm64 --tag visibilityspots/cloudflared:latest . --push
 
 env:
   global:
