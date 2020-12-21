@@ -1,24 +1,41 @@
+dist: focal
 os: linux
 language: shell
-
-services:
-- docker
 
 addons:
   apt:
     packages:
-    - docker-ce
+      - qemu-user-static
 
 before_install:
-- mkdir -p ~/.docker/cli-plugins
-- echo '{ "experimental":"enabled" }' > ~/.docker/config.json
-- curl -L -o ~/.docker/cli-plugins/docker-buildx https://github.com/docker/buildx/releases/download/v0.5.1/buildx-v0.5.1.linux-amd64
-- chmod +x ~/.docker/cli-plugins/docker-buildx
+- qemu-aarch64-static --version
+- update-binfmts --version
+- echo '{"experimental":"enabled"}' | sudo tee /etc/docker/daemon.json
+- mkdir -p $HOME/.docker/
+- echo '{ "experimental":"enabled" }' | sudo tee $HOME/.docker/config.json
+- export DOCKER_CLI_EXPERIMENTAL=enabled
+- docker info
+- DOCKER_APT_REPO="https://download.docker.com/linux/ubuntu"
+- curl -fsSL "${DOCKER_APT_REPO}/gpg" | sudo apt-key add -
+- OS="$(lsb_release -cs)"
+- sudo add-apt-repository "deb [arch=amd64] $DOCKER_APT_REPO $OS stable"
+- sudo apt-get update
+- sudo apt-get -y install docker-ce
+#- curl -L -o ~/.docker/cli-plugins/docker-buildx https://github.com/docker/buildx/releases/download/v0.5.1/buildx-v0.5.1.linux-amd64
+#- chmod +x ~/.docker/cli-plugins/docker-buildx
 - echo "$DOCKER_PASSWORD" | docker login --username visibilityspots --password-stdin
+- docker info
+
+install:
+- echo $DOCKER_CLI_EXPERIMENTAL
+- docker info
+- docker buildx
+#- docker buildx create --use
 
 script:
-#- docker buildx create --use
-- docker buildx build --platform linux/amd64,linux/arm,linux/arm64 --tag visibilityspots/cloudflared:latest . --push
+- docker info
+#- docker buildx version
+#- docker buildx build --platform linux/amd64,linux/arm,linux/arm64 --tag visibilityspots/cloudflared:latest . --push
 
 env:
   global:
