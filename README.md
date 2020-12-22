@@ -1,6 +1,6 @@
 # Cloudflared
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fvisibilityspots%2Fdockerfile-cloudflared%2Fbadge&style=flat)](https://actions-badge.atrox.dev/visibilityspots/dockerfile-cloudflared/goto)
+![Build Status](https://github.com/visibilityspots/dockerfile-cloudflared/workflows/CI/badge.svg)
 [![](https://images.microbadger.com/badges/image/visibilityspots/cloudflared:amd64.svg)](https://microbadger.com/images/visibilityspots/cloudflared:amd64)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Docker Pulls](https://img.shields.io/docker/pulls/visibilityspots/cloudflared.svg)](https://hub.docker.com/r/visibilityspots/cloudflared/)
