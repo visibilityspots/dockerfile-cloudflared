@@ -27,6 +27,20 @@ a docker container which runs the [cloudflared](https://developers.cloudflare.co
 
 ```docker run --name cloudflared --rm --net host -e ADDRESS :: visibilityspots/cloudflared```
 
+## build
+
+```
+docker build -t visibilityspots/cloudflared:latest .
+```
+
+## buildx
+
+```
+$ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+$ docker buildx build -t visibilityspots/cloudflared:latest --platform linux/amd64,linux/arm/v6,linux/arm/v7 --push .
+
+```
+
 ## test
 
 I wrote some tests in a goss.yaml file which can be executed by [dgoss](https://github.com/aelsabbahy/goss/tree/master/extras/dgoss)
