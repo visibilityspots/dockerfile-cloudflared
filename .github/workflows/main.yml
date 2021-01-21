@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Docker Login
         uses: docker/login-action@v1.8.0
         with:
@@ -22,12 +22,12 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      
+
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
-            
-      - name: Build and push
+
+      - name: Build and push latest
         uses: docker/build-push-action@v2
         with:
           context: .
@@ -36,3 +36,16 @@ jobs:
           push: true
           tags: |
             visibilityspots/cloudflared:latest
+            visibilityspots/cloudflared:alpine-3.13
+
+      - name: Build and push alpine 3.12
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
+          push: true
+          build-args: |
+            ALPINE_VERSION=3.12
+          tags: |
+            visibilityspots/cloudflared:alpine-3.12
