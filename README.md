@@ -34,7 +34,7 @@ $ docker run --name cloudflared --rm --net host -e PORT=5053 visibilityspots/clo
 ### dualstack ipv4/ipv6
 
 ```
-$ docker run --name cloudflared --rm --net host -e ADDRESS :: visibilityspots/cloudflared:latest
+$ docker run --name cloudflared --rm --net host -e ADDRESS=:: visibilityspots/cloudflared:latest
 ```
 
 ## test
