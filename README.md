@@ -9,28 +9,43 @@ a docker container which runs the [cloudflared](https://developers.cloudflare.co
 
 ## run
 
-```docker run --name cloudflared --rm --net host visibilityspots/cloudflared```
+```
+$ docker run --name cloudflared --rm --net host visibilityspots/cloudflared:latest
+```
 
 ### run with docker-compose
 
-```docker-compose up -d```
+```
+$ docker-compose up
+$ dig +short @10.0.0.2 -p 5054 visibilityspots.org
+13.225.238.129
+13.225.238.53
+13.225.238.9
+13.225.238.61
+```
 
 ### custom upstream DNS
 
-```docker run --name cloudflared --rm --net host -e DNS1=#.#.#.# -e DNS2=#.#.#.# visibilityspots/cloudflared```
+```
+$ docker run --name cloudflared --rm --net host -e DNS1=#.#.#.# -e DNS2=#.#.#.# visibilityspots/cloudflared:latest
+```
 
 ### custom port
 
-```docker run --name cloudflared --rm --net host -e PORT=5053 visibilityspots/cloudflared```
+```
+$ docker run --name cloudflared --rm --net host -e PORT=5053 visibilityspots/cloudflared:latest
+```
 
 ### dualstack ipv4/ipv6
 
-```docker run --name cloudflared --rm --net host -e ADDRESS :: visibilityspots/cloudflared```
+```
+$ docker run --name cloudflared --rm --net host -e ADDRESS :: visibilityspots/cloudflared:latest
+```
 
 ## build
 
 ```
-docker build -t visibilityspots/cloudflared:latest .
+$ docker build -t visibilityspots/cloudflared:latest .
 ```
 
 ## buildx
@@ -38,7 +53,6 @@ docker build -t visibilityspots/cloudflared:latest .
 ```
 $ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 $ docker buildx build -t visibilityspots/cloudflared:latest --platform linux/amd64,linux/arm/v6,linux/arm/v7 --push .
-
 ```
 
 ## test
