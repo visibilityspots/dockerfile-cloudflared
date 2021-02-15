@@ -17,17 +17,12 @@ $ docker run --name cloudflared --rm --net host visibilityspots/cloudflared:late
 
 ```
 $ docker-compose up
-$ dig +short @10.0.0.2 -p 5054 visibilityspots.org
-13.225.238.129
-13.225.238.53
-13.225.238.9
-13.225.238.61
 ```
 
-### custom upstream DNS
+### custom upstream DNS service
 
 ```
-$ docker run --name cloudflared --rm --net host -e DNS1=#.#.#.# -e DNS2=#.#.#.# visibilityspots/cloudflared:latest
+$ docker run --name cloudflared --rm --net host -e UPSTREAM1=https://dns.google/dns-query visibilityspots/cloudflared:latest
 ```
 
 ### custom port
@@ -42,22 +37,32 @@ $ docker run --name cloudflared --rm --net host -e PORT=5053 visibilityspots/clo
 $ docker run --name cloudflared --rm --net host -e ADDRESS :: visibilityspots/cloudflared:latest
 ```
 
+## test
+
+```
+$ dig +short @10.0.0.2 -p 5054 visibilityspots.org
+13.225.238.129
+13.225.238.53
+13.225.238.9
+13.225.238.61
+```
+
 ## build
 
 ```
 $ docker build -t visibilityspots/cloudflared:latest .
 ```
 
-## buildx
+### buildx
 
 ```
 $ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 $ docker buildx build -t visibilityspots/cloudflared:latest --platform linux/amd64,linux/arm/v6,linux/arm/v7 --push .
 ```
 
-## test
+### dgoss
 
-I wrote some tests in a goss.yaml file which can be executed by [dgoss](https://github.com/aelsabbahy/goss/tree/master/extras/dgoss)
+I wrote some tests in a goss.yaml file which can be executed by [dgoss](https://github.com/aelsabbahy/goss/tree/master/extras/dgoss) to test the created image
 
 ```
 $ dgoss run --name cloudflared --rm -ti visibilityspots/cloudflared:latest

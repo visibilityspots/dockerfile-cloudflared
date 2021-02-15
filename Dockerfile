@@ -19,10 +19,8 @@ ARG ALPINE_VERSION
 
 LABEL maintainer="Jan Collijs"
 
-ENV DNS1 1.1.1.1
-ENV UPSTREAM1 https://${DNS1}/dns-query
-ENV DNS2 1.0.0.1
-ENV UPSTREAM2 https://${DNS2}/dns-query
+ENV UPSTREAM1 https://1.1.1.1/dns-query
+ENV UPSTREAM2 https://1.0.0.1/dns-query
 ENV PORT 5054
 ENV ADDRESS 0.0.0.0
 ENV METRICS 127.0.0.1:8080
