@@ -37,6 +37,12 @@ $ docker run --name cloudflared --rm --net host -e PORT=5053 visibilityspots/clo
 $ docker run --name cloudflared --rm --net host -e ADDRESS=:: visibilityspots/cloudflared:latest
 ```
 
+### limit connections to upstream dns servers
+
+```
+$ docker run --name cloudflared --rm --net host -e MAX_UPSTREAM_CONNS=5 visibilityspots/cloudflared:latest
+```
+
 ## test
 
 ```
