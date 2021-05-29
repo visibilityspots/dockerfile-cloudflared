@@ -24,6 +24,7 @@ ENV UPSTREAM2 https://1.0.0.1/dns-query
 ENV PORT 5054
 ENV ADDRESS 0.0.0.0
 ENV METRICS 127.0.0.1:8080
+ENV MAX_UPSTREAM_CONNS 0
 
 RUN adduser -S cloudflared; \
     apk add --no-cache ca-certificates bind-tools libcap; \
@@ -37,4 +38,4 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD nslookup -po=${PORT
 
 USER cloudflared
 
-CMD ["/bin/sh", "-c", "/usr/local/bin/cloudflared proxy-dns --address ${ADDRESS} --port ${PORT} --metrics ${METRICS} --upstream ${UPSTREAM1} --upstream ${UPSTREAM2}"]
+CMD ["/bin/sh", "-c", "/usr/local/bin/cloudflared proxy-dns --address ${ADDRESS} --port ${PORT} --metrics ${METRICS} --upstream ${UPSTREAM1} --upstream ${UPSTREAM2} --max-upstream-conns ${MAX_UPSTREAM_CONNS}"]
