@@ -55,8 +55,14 @@ $ dig +short @10.0.0.2 -p 5054 visibilityspots.org
 
 ## build
 
+Build against pinned upstream release
 ```
 $ docker build -t visibilityspots/cloudflared:latest .
+```
+
+Build against a specific upstream release
+```
+$ docker build -t visibilityspots/cloudflared:latest . --build-arg UPSTREAM_RELEASE_TAG=2021.5.10
 ```
 
 ### buildx

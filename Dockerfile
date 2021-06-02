@@ -1,14 +1,19 @@
-ARG GOLANG_VERSION=1.15
+ARG GOLANG_VERSION=1.16.4
 ARG ALPINE_VERSION=3.13
+ARG UPSTREAM_RELEASE_TAG=2021.5.10
 
 FROM golang:${GOLANG_VERSION}-alpine${ALPINE_VERSION} as gobuild
 ARG GOLANG_VERSION
 ARG ALPINE_VERSION
+ARG UPSTREAM_RELEASE_TAG
 
-RUN apk add --no-cache git gcc build-base; \
-    go get -v github.com/cloudflare/cloudflared/cmd/cloudflared
+WORKDIR /tmp
 
-WORKDIR /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared
+RUN apk add --no-cache git gcc build-base curl tar && \
+    mkdir release && \
+    curl -L "https://github.com/cloudflare/cloudflared/archive/refs/tags/${UPSTREAM_RELEASE_TAG}.tar.gz" | tar xvz --strip 1 -C ./release
+
+WORKDIR /tmp/release/cmd/cloudflared
 
 RUN go build ./
 
@@ -30,7 +35,7 @@ RUN adduser -S cloudflared; \
     apk add --no-cache ca-certificates bind-tools libcap; \
     rm -rf /var/cache/apk/*;
 
-COPY --from=gobuild /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared/cloudflared /usr/local/bin/cloudflared
+COPY --from=gobuild /tmp/release/cmd/cloudflared/cloudflared /usr/local/bin/cloudflared
 
 RUN setcap CAP_NET_BIND_SERVICE+eip /usr/local/bin/cloudflared
 
