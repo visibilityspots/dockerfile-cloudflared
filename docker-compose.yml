@@ -9,12 +9,10 @@ services:
       - "5054:5054/tcp"
       - "5054:5054/udp"
     environment:
+        TZ: ${TIMEZONE}
         PORT: 5054
         ADDRESS: 0.0.0.0
     restart: always
-    environment:
-      TZ: '${TIMEZONE}'
-    restart: unless-stopped
     networks:
       cloudflared_net:
         ipv4_address: 10.0.0.2
