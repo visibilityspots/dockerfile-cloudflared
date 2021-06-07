@@ -32,7 +32,7 @@ ENV METRICS 127.0.0.1:8080
 ENV MAX_UPSTREAM_CONNS 0
 
 RUN adduser -S cloudflared; \
-    apk add --no-cache ca-certificates bind-tools libcap; \
+    apk add --no-cache ca-certificates bind-tools libcap tzdata; \
     rm -rf /var/cache/apk/*;
 
 COPY --from=gobuild /tmp/release/cmd/cloudflared/cloudflared /usr/local/bin/cloudflared
