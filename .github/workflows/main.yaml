@@ -47,5 +47,6 @@ jobs:
           push: true
           build-args: |
             ALPINE_VERSION=3.12
+            GOLANG_VERSION=1.16
           tags: |
             visibilityspots/cloudflared:alpine-3.12
