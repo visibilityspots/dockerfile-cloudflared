@@ -1,6 +1,6 @@
-ARG GOLANG_VERSION=1.17.0
+ARG GOLANG_VERSION=1.17.1
 ARG ALPINE_VERSION=3.14
-ARG UPSTREAM_RELEASE_TAG=2021.8.6
+ARG UPSTREAM_RELEASE_TAG=2021.9.1
 
 FROM golang:${GOLANG_VERSION}-alpine${ALPINE_VERSION} as gobuild
 ARG GOLANG_VERSION
@@ -9,7 +9,7 @@ ARG UPSTREAM_RELEASE_TAG
 
 WORKDIR /tmp
 
-RUN apk add --no-cache git gcc build-base curl tar && \
+RUN apk add --no-cache gcc build-base curl tar && \
     mkdir release && \
     curl -L "https://github.com/cloudflare/cloudflared/archive/refs/tags/${UPSTREAM_RELEASE_TAG}.tar.gz" | tar xvz --strip 1 -C ./release
 
