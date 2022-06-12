@@ -62,14 +62,14 @@ $ docker build -t visibilityspots/cloudflared:latest .
 
 Build against a specific upstream release
 ```
-$ docker build -t visibilityspots/cloudflared:latest . --build-arg UPSTREAM_RELEASE_TAG=2021.5.10
+$ docker build -t visibilityspots/cloudflared:latest . --build-arg CLOUDFLARED_VERSION=2022.5.3
 ```
 
 ### buildx
 
 ```
 $ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-$ docker buildx build -t visibilityspots/cloudflared:latest --platform linux/amd64,linux/arm/v6,linux/arm/v7 --push .
+$ docker buildx build -t visibilityspots/cloudflared:2022.5.3 -t visibilityspots/cloudflared:latest --platform linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64 --push .
 ```
 
 ### dgoss
