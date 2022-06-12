@@ -20,16 +20,13 @@ RUN xx-go build -v -mod=vendor -trimpath -o /bin/cloudflared \
 
 FROM alpine:${ALPINE_VERSION}
 
-ARG GOLANG_VERSION
-ARG ALPINE_VERSION
-
 LABEL maintainer="Jan Collijs"
 
 ENV UPSTREAM1 https://1.1.1.1/dns-query
 ENV UPSTREAM2 https://1.0.0.1/dns-query
-ENV PORT 5054
+ENV PORT 5053
 ENV ADDRESS 0.0.0.0
-ENV METRICS 127.0.0.1:8080
+ENV METRICS 0.0.0.0:8080
 ENV MAX_UPSTREAM_CONNS 0
 
 RUN adduser -S cloudflared; \
