@@ -47,8 +47,10 @@ jobs:
           build-args: |
             ALPINE_VERSION=3.12
             GOLANG_VERSION=1.16
+            UPSTREAM_RELEASE_TAG=2021.10.4
           tags: |
             visibilityspots/cloudflared:alpine-3.12
+            visibilityspots/cloudflared:2021.10.4-alpine-3.12
 
       - name: Build and push alpine 3.13
         uses: docker/build-push-action@v3
@@ -60,5 +62,7 @@ jobs:
           build-args: |
             ALPINE_VERSION=3.13
             GOLANG_VERSION=1.16
+            UPSTREAM_RELEASE_TAG=2021.10.4
           tags: |
             visibilityspots/cloudflared:alpine-3.13
+            visibilityspots/cloudflared:2021.10.4-alpine-3.13
