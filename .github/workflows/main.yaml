@@ -36,6 +36,7 @@ jobs:
           push: true
           tags: |
             visibilityspots/cloudflared:latest
+            visibilityspots/cloudflared:2022.11.1-alpine-3.17
 
       - name: Build and push alpine 3.12
         uses: docker/build-push-action@v3
