@@ -8,8 +8,6 @@ on:
   - cron: "0 8 * * 1"
 
 jobs:
-
-jobs:
   test:
     runs-on: ubuntu-latest
     steps:
