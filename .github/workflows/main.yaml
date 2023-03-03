@@ -53,4 +53,4 @@ jobs:
           push: true
           tags: |
             visibilityspots/cloudflared:latest
-            visibilityspots/cloudflared:2023.2.2-alpine-3.17
+            visibilityspots/cloudflared:2023.3.0-alpine-3.17
