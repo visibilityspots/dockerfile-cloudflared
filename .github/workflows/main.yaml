@@ -2,7 +2,8 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    tags:
+      - '*'
   workflow_dispatch:
   schedule:
   - cron: "0 8 * * 1"
@@ -53,4 +54,4 @@ jobs:
           push: true
           tags: |
             visibilityspots/cloudflared:latest
-            visibilityspots/cloudflared:2023.3.0-alpine-3.17
+            visibilityspots/cloudflared:${{ github.ref_name }}
