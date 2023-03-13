@@ -57,6 +57,6 @@ jobs:
             visibilityspots/cloudflared:${{ github.ref_name }}
 
       - name: Create github release
-         uses: ncipollo/release-action@v1
-         with:
+        uses: ncipollo/release-action@v1
+        with:
           makeLatest: true
