@@ -2,9 +2,24 @@ package:
   ca-certificates:
     installed: true
 
+user:
+  cloudflared:
+    exists: true
+
+process:
+  cloudflared:
+    running: true
+
 command:
   uname -a:
     exit-status: 0
 
   cloudflared --version:
     exit-status: 0
+    stdout:
+    - cloudflared version 2023.7.0 (built July 2023)
+
+dns:
+  visibilityspots.org:
+    resolvable: true
+    server: 127.0.0.1:5054
