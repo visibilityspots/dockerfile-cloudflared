@@ -1,6 +1,7 @@
 # Cloudflared
 
 [![build status](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yaml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yaml)
+[![gitHub release](https://img.shields.io/github/v/release/visibilityspots/dockerfile-cloudflared)](https://github.com/visibilityspots/dockerfile-cloudflared/releases)
 [![docker image size](https://img.shields.io/docker/image-size/visibilityspots/cloudflared/latest)](https://hub.docker.com/r/visibilityspots/cloudflared)
 [![docker pulls](https://img.shields.io/docker/pulls/visibilityspots/cloudflared.svg)](https://hub.docker.com/r/visibilityspots/cloudflared/)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
