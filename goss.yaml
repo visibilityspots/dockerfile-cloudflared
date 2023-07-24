@@ -17,7 +17,7 @@ command:
   cloudflared --version:
     exit-status: 0
     stdout:
-    - cloudflared version 2023.7.1 (built July 2023)
+    - cloudflared version 2023.7.2 (built July 2023)
 
 dns:
   visibilityspots.org:
