@@ -15,7 +15,7 @@ jobs:
         run: docker build -t visibilityspots/cloudflared:dev .
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.16.0
+        uses: aquasecurity/trivy-action@0.16.1
         with:
           image-ref: 'visibilityspots/cloudflared:dev'
           format: 'template'
