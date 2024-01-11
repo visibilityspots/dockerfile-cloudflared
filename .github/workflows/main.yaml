@@ -19,7 +19,7 @@ jobs:
         with:
           image-ref: 'visibilityspots/cloudflared:dev'
           format: 'template'
-          template: '@/contrib/sarif'
+          template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
 
