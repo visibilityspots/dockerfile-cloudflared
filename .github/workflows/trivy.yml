@@ -18,7 +18,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  scan:
     permissions:
       contents: read
       security-events: write
@@ -36,8 +36,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.16.1
         with:
           image-ref: 'visibilityspots/cloudflared:dev'
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
+          format: 'sarif'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
 
