@@ -1,10 +1,13 @@
 # Cloudflared
 
+[![trivy](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/trivy.yml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/trivy.yml)
+[![docker-hub-description](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/docker-hub-description.yml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/docker-hub-description.yml)
 [![build status](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yaml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yaml)
 [![gitHub release](https://img.shields.io/github/v/release/visibilityspots/dockerfile-cloudflared)](https://github.com/visibilityspots/dockerfile-cloudflared/releases)
 [![docker image size](https://img.shields.io/docker/image-size/visibilityspots/cloudflared/latest)](https://hub.docker.com/r/visibilityspots/cloudflared)
 [![docker pulls](https://img.shields.io/docker/pulls/visibilityspots/cloudflared.svg)](https://hub.docker.com/r/visibilityspots/cloudflared/)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvisibilityspots%2Fdockerfile-cloudflared.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvisibilityspots%2Fdockerfile-cloudflared?ref=badge_shield&issueType=license)
 
 a docker container which runs the [cloudflared](https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/) proxy-dns at port 5054 based on alpine with some parameters to enable DNS over HTTPS proxy for [pi-hole](https://pi-hole.net/) based on tutorials from [Oliver Hough](https://oliverhough.cloud/blog/configure-pihole-with-dns-over-https/) and [Scott Helme](https://scotthelme.co.uk/securing-dns-across-all-of-my-devices-with-pihole-dns-over-https-1-1-1-1/)
 
