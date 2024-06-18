@@ -81,7 +81,7 @@ $ docker buildx build -t visibilityspots/cloudflared:latest --platform linux/amd
 I wrote some tests in a goss.yaml file which can be executed by [dgoss](https://github.com/aelsabbahy/goss/tree/master/extras/dgoss) to test the created image
 
 ```
-$ dgoss run --name cloudflared --rm -ti visibilityspots/cloudflared:latest
+$ dgoss run visibilityspots/cloudflared:latest
 INFO: Starting docker container
 INFO: Container ID: 792bc39d
 INFO: Sleeping for 0.2
