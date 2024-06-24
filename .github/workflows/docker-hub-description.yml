@@ -2,7 +2,8 @@ name: docker-hub-description
 
 on:
   push:
-    branches: [ "master" ]
+    tags:
+      - '*'
 
 jobs:
   update:
