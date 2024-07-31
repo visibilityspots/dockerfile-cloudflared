@@ -31,6 +31,15 @@ jobs:
         uses: aquasecurity/trivy-action@0.24.0
         with:
           image-ref: 'visibilityspots/cloudflared:dev'
+          format: 'table'
+          exit-code: 0
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.23.0
+        with:
+          image-ref: 'visibilityspots/cloudflared:dev'
           format: 'sarif'
           output: 'trivy-results.sarif'
           ignore-unfixed: true
