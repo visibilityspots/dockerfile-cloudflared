@@ -24,12 +24,12 @@ ARG ALPINE_VERSION
 
 LABEL maintainer="Jan Collijs"
 
-ENV UPSTREAM1 https://1.1.1.1/dns-query
-ENV UPSTREAM2 https://1.0.0.1/dns-query
-ENV PORT 5054
-ENV ADDRESS 0.0.0.0
-ENV METRICS 127.0.0.1:8080
-ENV MAX_UPSTREAM_CONNS 0
+ENV UPSTREAM1=https://1.1.1.1/dns-query
+ENV UPSTREAM2=https://1.0.0.1/dns-query
+ENV PORT=5054
+ENV ADDRESS=0.0.0.0
+ENV METRICS=127.0.0.1:8080
+ENV MAX_UPSTREAM_CONNS=0
 
 RUN adduser -S cloudflared; \
     apk add --no-cache ca-certificates bind-tools libcap tzdata; \
