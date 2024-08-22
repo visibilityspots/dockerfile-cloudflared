@@ -69,7 +69,6 @@ jobs:
         with:
           makeLatest: true
           allowUpdates: true
-          generateReleaseNotes: true
           body: ${{ steps.changelog.output.changes }}
           token: ${{ github.token }}
 
