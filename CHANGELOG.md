@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2024.10.1] - 2024-10-24
+### :bug: Bug Fixes
+- [`c4bc296`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/c4bc29623a89a8e9ead3734f0d5291a66f20964f) - **ci**: using AWS based trivy repositories to mitigate TOOMANYREQUESTS from GHCR based ones *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+### :wrench: Chores
+- [`ad8eb0a`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/ad8eb0a2a050298a26d648f15e6b9198513546d4) - **update**: cloudflared v2024.10.1 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+
 ## [v2024.10.0] - 2024-10-10
 ### :wrench: Chores
 - [`ea05d70`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/ea05d70aff2c2dd429577aec4f6ad98cc46ae6bf) - **update**: cloudflared v2024.10.0 + golang v1.23.2 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
@@ -26,3 +34,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2024.8.3]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.8.2...v2024.8.3
 [v2024.9.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.9.0...v2024.9.1
 [v2024.10.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.9.1...v2024.10.0
+[v2024.10.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.10.0...v2024.10.1
