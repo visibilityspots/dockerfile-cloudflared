@@ -4,6 +4,10 @@ on:
   push:
     tags:
       - '*'
+  workflow_call:
+
+env:
+  env_var: ${{ vars.ENV_CONTEXT_VAR }}
 
 jobs:
   update:
@@ -17,5 +21,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: visibilityspots/cloudflared
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKERHUB_REPOSITORY }}
           short-description: ${{ github.event.repository.description }}
