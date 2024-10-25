@@ -6,9 +6,6 @@ on:
       - '*'
   workflow_call:
 
-env:
-  env_var: ${{ vars.ENV_CONTEXT_VAR }}
-
 jobs:
   update:
     runs-on: ubuntu-latest
