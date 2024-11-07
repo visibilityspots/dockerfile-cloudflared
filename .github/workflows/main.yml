@@ -12,7 +12,7 @@ on:
 env:
   DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
   DOCKERHUB_REPOSITORY: ${{ vars.DOCKERHUB_REPOSITORY }}
-  GOSS_CMD: ''
+  GOSS_CMD: ${{ vars.GOSS_CMD }}
 
 jobs:
   test:
