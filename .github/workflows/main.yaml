@@ -12,6 +12,7 @@ on:
 env:
   DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
   DOCKERHUB_REPOSITORY: ${{ vars.DOCKERHUB_REPOSITORY }}
+  GOSS_CMD: ''
 
 jobs:
   test:
@@ -23,15 +24,14 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev .
 
-      - name: Install Goss
-        uses: e1himself/goss-installation-action@v1.2.1
+      - uses: e1himself/goss-installation-action@v1.2.1
         with:
           version: 'v0.4.9'
 
-      - name: Execute Goss tests
+      - name: Execute Goss
         env:
           GOSS_FILES_STRATEGY: cp
-        run: dgoss run ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev
+        run: dgoss run ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev ${{ env.GOSS_CMD }}
 
   deploy:
     needs: test
@@ -50,7 +50,8 @@ jobs:
 
       - uses: docker/setup-buildx-action@v3
 
-      - uses: docker/build-push-action@v6
+      - name: Build and push ${{ env.DOCKERHUB_REPOSITORY }} image
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
@@ -62,19 +63,23 @@ jobs:
           cache-from: type=registry,ref=${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:buildcache
           cache-to: type=registry,ref=${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:buildcache,mode=max
 
-      - uses: requarks/changelog-action@v1
+      - name: Generate CHANGELOG
+        id: changelog
+        uses: requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
           tag: ${{ github.ref_name }}
 
-      - uses: ncipollo/release-action@v1
+      - name: Create github ${{ github.ref_name }} release
+        uses: ncipollo/release-action@v1
         with:
           makeLatest: true
           allowUpdates: true
           body: ${{ steps.changelog.output.changes }}
           token: ${{ github.token }}
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Commit updated CHANGELOG.md for ${{ github.ref_name }}
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: main
           commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'

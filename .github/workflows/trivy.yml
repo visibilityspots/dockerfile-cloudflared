@@ -2,6 +2,8 @@ name: trivy
 
 on:
   push:
+    tags:
+      - '*'
   schedule:
     - cron: '44 19 * * 4'
   workflow_call:
