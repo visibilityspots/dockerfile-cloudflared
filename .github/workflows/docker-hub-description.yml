@@ -3,6 +3,16 @@ name: docker-hub-description
 on:
   push:
   workflow_call:
+    inputs:
+      DOCKERHUB_USERNAME:
+        required: true
+        type: string
+      DOCKERHUB_REPOSITORY:
+        required: true
+        type: string
+    secrets:
+      DOCKERHUB_TOKEN:
+        required: true
 
 jobs:
   update:
@@ -14,7 +24,7 @@ jobs:
       - name: Update docker hub description
         uses: peter-evans/dockerhub-description@v4
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKERHUB_REPOSITORY }}
+          repository: ${{ github.repository_owner }}/${{ vars.DOCKERHUB_REPOSITORY }}
           short-description: ${{ github.event.repository.description }}
