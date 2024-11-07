@@ -2,8 +2,6 @@ name: docker-hub-description
 
 on:
   push:
-    tags:
-      - '*'
   workflow_call:
 
 jobs:
