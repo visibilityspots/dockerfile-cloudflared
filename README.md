@@ -2,7 +2,7 @@
 
 [![trivy](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/trivy.yml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/trivy.yml)
 [![docker-hub-description](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/docker-hub-description.yml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/docker-hub-description.yml)
-[![build status](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yaml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yaml)
+[![build status](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yml)
 [![gitHub release](https://img.shields.io/github/v/release/visibilityspots/dockerfile-cloudflared)](https://github.com/visibilityspots/dockerfile-cloudflared/releases)
 [![docker image size](https://img.shields.io/docker/image-size/visibilityspots/cloudflared/latest)](https://hub.docker.com/r/visibilityspots/cloudflared)
 [![docker pulls](https://img.shields.io/docker/pulls/visibilityspots/cloudflared.svg)](https://hub.docker.com/r/visibilityspots/cloudflared/)
