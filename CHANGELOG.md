@@ -4,11 +4,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v2024.11.0] - 2024-11-07
-### :wrench: Chores
-- [`a80a2cd`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/a80a2cd9044c9a3c33667a8cd9e3afcc6ef4f3b5) - **update**: Golang v1.23.3 + Cloudflared v2024.11.0 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
-
-
 ## [v2024.10.1] - 2024-10-24
 ### :bug: Bug Fixes
 - [`c4bc296`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/c4bc29623a89a8e9ead3734f0d5291a66f20964f) - **ci**: using AWS based trivy repositories to mitigate TOOMANYREQUESTS from GHCR based ones *(commit by [@visibilityspots](https://github.com/visibilityspots))*
