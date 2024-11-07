@@ -5,8 +5,8 @@ on:
   workflow_call:
     inputs:
       DOCKERHUB_USERNAME:
+        required: true
         type: string
-        default: "visibilityspots"
       DOCKERHUB_REPOSITORY:
         required: true
         type: string
