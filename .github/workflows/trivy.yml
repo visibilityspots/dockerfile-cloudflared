@@ -2,51 +2,51 @@ name: trivy
 
 on:
   push:
-    tags:
-      - '*'
   schedule:
     - cron: '44 19 * * 4'
+  workflow_call:
 
 permissions:
   contents: read
+
+env:
+  DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+  DOCKERHUB_REPOSITORY: ${{ vars.DOCKERHUB_REPOSITORY }}
+  TRIVY_DB_REPOSITORY: 'public.ecr.aws/aquasecurity/trivy-db'
+  TRIVY_JAVA_DB_REPOSITORY: 'public.ecr.aws/aquasecurity/trivy-java-db'
 
 jobs:
   scan:
     permissions:
       contents: read
       security-events: write
-    runs-on: "ubuntu-latest"
+
+    runs-on: 'ubuntu-latest'
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Build an image from Dockerfile
         run: |
-          docker build -t visibilityspots/cloudflared:dev .
+          docker build -t ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: 'visibilityspots/cloudflared:dev'
+          image-ref: '${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev'
           format: 'table'
           exit-code: 0
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
-        env:
-          TRIVY_DB_REPOSITORY: 'public.ecr.aws/aquasecurity/trivy-db'
-          TRIVY_JAVA_DB_REPOSITORY: 'public.ecr.aws/aquasecurity/trivy-java-db'
 
-      - name: Run Trivy vulnerability scanner
+      - name: Store Trivy vulnerability scanner output
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: 'visibilityspots/cloudflared:dev'
+          image-ref: '${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev'
           format: 'sarif'
           output: 'trivy-results.sarif'
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
-        env:
-          TRIVY_DB_REPOSITORY: 'public.ecr.aws/aquasecurity/trivy-db'
-          TRIVY_JAVA_DB_REPOSITORY: 'public.ecr.aws/aquasecurity/trivy-java-db'
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
