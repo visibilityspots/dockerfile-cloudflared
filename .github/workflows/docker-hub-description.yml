@@ -27,4 +27,4 @@ jobs:
           username: ${{ inputs.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: ${{ github.repository_owner }}/${{ inputs.DOCKERHUB_REPOSITORY }}
-        short-description: ${{ github.event.repository.description }}
+          short-description: ${{ github.event.repository.description }}
