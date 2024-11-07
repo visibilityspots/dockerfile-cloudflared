@@ -5,8 +5,8 @@ on:
   workflow_call:
     inputs:
       DOCKERHUB_USERNAME:
-        required: true
         type: string
+        default: "visibilityspots"
       DOCKERHUB_REPOSITORY:
         required: true
         type: string
@@ -24,7 +24,7 @@ jobs:
       - name: Update docker hub description
         uses: peter-evans/dockerhub-description@v4
         with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
+          username: ${{ inputs.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ github.repository_owner }}/${{ vars.DOCKERHUB_REPOSITORY }}
-          short-description: ${{ github.event.repository.description }}
+          repository: ${{ github.repository_owner }}/${{ inputs.DOCKERHUB_REPOSITORY }}
+        short-description: ${{ github.event.repository.description }}
