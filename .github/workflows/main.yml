@@ -5,6 +5,10 @@ on:
     tags:
       - '*'
   workflow_call:
+    inputs:
+      GOSS_CMD:
+        type: string
+        required: false
     secrets:
       DOCKERHUB_TOKEN:
         required: true
@@ -12,7 +16,6 @@ on:
 env:
   DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
   DOCKERHUB_REPOSITORY: ${{ vars.DOCKERHUB_REPOSITORY }}
-  GOSS_CMD: ${{ vars.GOSS_CMD }}
 
 jobs:
   test:
@@ -21,17 +24,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build Docker image
+      - name: Build ${{ env.DOCKERHUB_REPOSITORY }}:dev image
         run: docker build -t ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev .
 
       - uses: e1himself/goss-installation-action@v1.2.1
         with:
           version: 'v0.4.9'
 
-      - name: Execute Goss
+      - name: Execute dgoss run on ${{ env.DOCKERHUB_REPOSITORY }}:dev image
         env:
           GOSS_FILES_STRATEGY: cp
-        run: dgoss run ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev ${{ env.GOSS_CMD }}
+        run: dgoss run ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev ${{ inputs.GOSS_CMD }}
 
   deploy:
     needs: test
