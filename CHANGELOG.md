@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v2024.11.1] - 2024-11-19
+### :wrench: Chores
+- [`13e7bb9`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/13e7bb9686da741b394ffd6b591e5b75ffbd999a) - **ci**: using secret for GOSS_CMD *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+- [`efaa11d`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/efaa11d47f46b038a708d0ff3a71f17d961a14c5) - **update**: Cloudflared v2024.11.1 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+
 ## [v2024.11.0] - 2024-11-08
 ### :sparkles: New Features
 - [`b2f7347`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/b2f7347c442194c83ed6db0103c66530e89a9c1d) - **ci**: adding reusable workflow parameters + refactored some of them *(commit by [@visibilityspots](https://github.com/visibilityspots))*
@@ -65,3 +71,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2024.11.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.10.1...v2024.11.0
 [v2024.11.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.10.1...v2024.11.0
 [v2024.11.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.10.1...v2024.11.0
+[v2024.11.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.11.0...v2024.11.1
