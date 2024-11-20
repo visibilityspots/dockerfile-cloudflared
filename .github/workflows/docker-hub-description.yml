@@ -7,7 +7,7 @@ on:
   workflow_call:
     secrets:
       DOCKERHUB_TOKEN:
-        required: false
+        required: true
 
 env:
   DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
