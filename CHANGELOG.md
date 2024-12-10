@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v2024.12.0] - 2024-12-10
+### :sparkles: New Features
+- [`3c1fce0`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/3c1fce03236cd9197c4b0adde0293724a663843d) - **ci**: introducing parameterized DOCKERHUB_PLATFORMS *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+### :wrench: Chores
+- [`396f777`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/396f7773c5a1e8d4829811ef607556d0ab6ac9c3) - **ci**: disable requirement on DOCKERHUB_TOKEN to test inheritance *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+- [`a4132ca`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/a4132caa25d33213ae83633a04953d75f5053e4e) - **update**: Cloudflared v2024.12.0 + Golang v1.23.4 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+
 ## [v2024.11.1] - 2024-11-19
 ### :wrench: Chores
 - [`13e7bb9`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/13e7bb9686da741b394ffd6b591e5b75ffbd999a) - **ci**: using secret for GOSS_CMD *(commit by [@visibilityspots](https://github.com/visibilityspots))*
@@ -72,3 +81,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2024.11.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.10.1...v2024.11.0
 [v2024.11.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.10.1...v2024.11.0
 [v2024.11.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.11.0...v2024.11.1
+[v2024.12.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.11.1...v2024.12.0
