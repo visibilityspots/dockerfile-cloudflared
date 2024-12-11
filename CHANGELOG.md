@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v2024.12.1] - 2024-12-11
+### :wrench: Chores
+- [`5ce16f6`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/5ce16f6492d93f23b49e5e81eafde8efedd32c9a) - **update**: Cloudflared v2024.12.1 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+
 ## [v2024.12.0] - 2024-12-10
 ### :sparkles: New Features
 - [`3c1fce0`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/3c1fce03236cd9197c4b0adde0293724a663843d) - **ci**: introducing parameterized DOCKERHUB_PLATFORMS *(commit by [@visibilityspots](https://github.com/visibilityspots))*
@@ -82,3 +87,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2024.11.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.10.1...v2024.11.0
 [v2024.11.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.11.0...v2024.11.1
 [v2024.12.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.11.1...v2024.12.0
+[v2024.12.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.12.0...v2024.12.1
