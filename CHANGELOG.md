@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v2024.12.2] - 2024-12-19
+### :wrench: Chores
+- [`2c82345`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/2c82345f4c3a224549719af7264f1944f2717543) - **ci**: using ubuntu-24.04 for github action runners *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+- [`8d621d5`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/8d621d57ddf75339bde40d930970742519d334f4) - **update**: Cloudflared v2024.12.2 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+
 ## [v2024.12.1] - 2024-12-11
 ### :wrench: Chores
 - [`5ce16f6`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/5ce16f6492d93f23b49e5e81eafde8efedd32c9a) - **update**: Cloudflared v2024.12.1 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
@@ -88,3 +94,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2024.11.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.11.0...v2024.11.1
 [v2024.12.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.11.1...v2024.12.0
 [v2024.12.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.12.0...v2024.12.1
+[v2024.12.2]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.12.1...v2024.12.2
