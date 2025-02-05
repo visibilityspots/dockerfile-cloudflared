@@ -10,7 +10,7 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvisibilityspots%2Fdockerfile-cloudflared.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvisibilityspots%2Fdockerfile-cloudflared?ref=badge_shield&issueType=license)
 
 a docker container which runs the [cloudflared](https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/) proxy-dns at port 5054 based on alpine with some parameters to enable DNS over HTTPS proxy which can be used in combination with different DNS based adblocker;
-* [pi-hole](https://pi-hole.net/) 
+* [pi-hole](https://pi-hole.net/)
 * [blocky](https://github.com/0xERR0R/blocky)
 * ...
 
@@ -19,7 +19,7 @@ Originally based on tutorials from [Oliver Hough](https://oliverhough.cloud/blog
 ## run
 
 ```
-$ docker run --name cloudflared --rm --net host visibilityspots/cloudflared:latest
+$ docker run --name cloudflared --rm -p 5054:5054/udp visibilityspots/cloudflared:latest
 ```
 
 ### run with docker-compose
@@ -31,25 +31,25 @@ $ docker-compose up
 ### custom upstream DNS service
 
 ```
-$ docker run --name cloudflared --rm --net host -e UPSTREAM1=https://dns.google/dns-query visibilityspots/cloudflared:latest
+$ docker run --name cloudflared --rm -p 5054:5054/udp -e UPSTREAM1=https://dns.google/dns-query visibilityspots/cloudflared:latest
 ```
 
 ### custom port
 
 ```
-$ docker run --name cloudflared --rm --net host -e PORT=5053 visibilityspots/cloudflared:latest
+$ docker run --name cloudflared --rm -p 5053:5053/udp -e PORT=5053 visibilityspots/cloudflared:latest
 ```
 
 ### dualstack ipv4/ipv6
 
 ```
-$ docker run --name cloudflared --rm --net host -e ADDRESS=:: visibilityspots/cloudflared:latest
+$ docker run --name cloudflared --rm -p 5054:5054/udp -e ADDRESS=:: visibilityspots/cloudflared:latest
 ```
 
 ### limit connections to upstream dns servers
 
 ```
-$ docker run --name cloudflared --rm --net host -e MAX_UPSTREAM_CONNS=5 visibilityspots/cloudflared:latest
+$ docker run --name cloudflared --rm -p 5054:5054/udp -e MAX_UPSTREAM_CONNS=5 visibilityspots/cloudflared:latest
 ```
 
 ## test
