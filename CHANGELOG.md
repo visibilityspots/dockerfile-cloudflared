@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v2025.2.1] - 2025-02-27
+### :wrench: Chores
+- [`df22578`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/df22578a728da77e1399bf0cda10b88a609e228a) - **update**: chore(update): golang v1.24.0 + cloudflared v2025.2.1 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+
 ## [v2025.2.0] - 2025-02-05
 ### :wrench: Chores
 - [`e97e76a`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/e97e76a4ace6d831fa58e138004e58b1bc1a8987) - **doc**: using udp port forwarding over net host mode in docker run commands *(commit by [@visibilityspots](https://github.com/visibilityspots))*
@@ -114,3 +119,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2025.1.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2024.12.2...v2025.1.0
 [v2025.1.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.1.0...v2025.1.1
 [v2025.2.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.1.1...v2025.2.0
+[v2025.2.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.2.0...v2025.2.1
