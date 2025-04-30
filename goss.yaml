@@ -17,7 +17,7 @@ command:
   cloudflared --version:
     exit-status: 0
     stdout:
-    - cloudflared version 2025.4.0 (built April 2025)
+    - cloudflared version 2025.4.2 (built April 2025)
 
 dns:
   visibilityspots.org:
