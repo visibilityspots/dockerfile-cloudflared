@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v2025.5.0] - 2025-05-15
+### :wrench: Chores
+- [`784a116`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/784a116c0505ec694a54c1bd288ed261b95a8147) - **update**: Cloudflared v2025.5.0 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+
 ## [v2025.4.2] - 2025-04-30
 ### :wrench: Chores
 - [`0cc2e1e`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/0cc2e1e54188ddb6d4f12c84570aff9f3bb6d4b8) - **update**: Cloudflared v2025.4.2 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
@@ -132,3 +137,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2025.2.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.2.0...v2025.2.1
 [v2025.4.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.2.1...v2025.4.0
 [v2025.4.2]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.4.0...v2025.4.2
+[v2025.5.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.4.2...v2025.5.0
