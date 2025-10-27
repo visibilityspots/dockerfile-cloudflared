@@ -29,7 +29,7 @@ jobs:
       - name: Build ${{ env.DOCKERHUB_REPOSITORY }}:dev image
         run: docker build -t ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev .
 
-      - uses: e1himself/goss-installation-action@v1.2.1
+      - uses: e1himself/goss-installation-action@v1.3.0
         with:
           version: 'v0.4.9'
 
