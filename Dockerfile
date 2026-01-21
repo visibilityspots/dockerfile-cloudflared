@@ -1,6 +1,6 @@
-ARG GOLANG_VERSION=1.25.4
-ARG ALPINE_VERSION=3.22
-ARG UPSTREAM_RELEASE_TAG=2025.11.1
+ARG GOLANG_VERSION=1.25.6
+ARG ALPINE_VERSION=3.23
+ARG UPSTREAM_RELEASE_TAG=2026.1.1
 
 FROM golang:${GOLANG_VERSION}-alpine${ALPINE_VERSION} AS gobuild
 ARG GOLANG_VERSION
@@ -38,8 +38,6 @@ RUN adduser -S cloudflared; \
 COPY --from=gobuild /tmp/release/cmd/cloudflared/cloudflared /usr/local/bin/cloudflared
 
 RUN setcap CAP_NET_BIND_SERVICE+eip /usr/local/bin/cloudflared
-
-HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD nslookup -po=${PORT} cloudflare.com 127.0.0.1 || exit 1
 
 USER cloudflared
 
