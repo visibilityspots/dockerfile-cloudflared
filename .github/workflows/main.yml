@@ -24,7 +24,13 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
+<<<<<<< Updated upstream
       - uses: actions/checkout@v6
+=======
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+>>>>>>> Stashed changes
 
       - name: Build ${{ env.DOCKERHUB_REPOSITORY }}:dev image
         run: docker build -t ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:dev .
