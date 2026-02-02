@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v2026.1.2] - 2026-02-02
+### :wrench: Chores
+- [`dd4c9a3`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/dd4c9a3d628d593e3daf0fb59189987a4dc2ec79) - **update**: Cloudflared v2026.1.2 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
+
+
 ## [v2026.1.1] - 2026-01-22
 ### :wrench: Chores
 - [`243f670`](https://github.com/visibilityspots/dockerfile-cloudflared/commit/243f670fd53846037f75d1219e61acddbbc5a717) - **update**: Cloudflared v2026.1.1 + golang v1.25.6 *(commit by [@visibilityspots](https://github.com/visibilityspots))*
@@ -212,3 +217,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2025.11.0]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.10.1...v2025.11.0
 [v2025.11.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.11.0...v2025.11.1
 [v2026.1.1]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2025.11.1...v2026.1.1
+[v2026.1.2]: https://github.com/visibilityspots/dockerfile-cloudflared/compare/v2026.1.1...v2026.1.2
