@@ -1,5 +1,9 @@
 # Cloudflared
 
+> **This repository is archived.** Cloudflare [announced](https://developers.cloudflare.com/changelog/2025-11-11-cloudflared-proxy-dns/) the removal of the `cloudflared proxy-dns` command from all new releases starting February 2, 2026, citing a security vulnerability in an underlying DNS library. There is no point maintaining a docker image that wraps a command that no longer exists in current upstream releases.
+>
+> The image on Docker Hub isn't going anywhere and existing releases of `cloudflared` made before February 2, 2026 will keep working, but there won't be any new releases or maintenance. If you're setting something up fresh, consider [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy) via the [klutchell/dnscrypt-proxy-docker](https://github.com/klutchell/dnscrypt-proxy-docker) image instead. Read the full write-up [on my blog](https://visibilityspots.org/dns-crypt.html).
+
 [![trivy](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/trivy.yml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/trivy.yml)
 [![docker-hub-description](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/docker-hub-description.yml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/docker-hub-description.yml)
 [![build status](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yml/badge.svg)](https://github.com/visibilityspots/dockerfile-cloudflared/actions/workflows/main.yml)
